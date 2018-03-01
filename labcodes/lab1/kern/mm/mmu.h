@@ -58,7 +58,6 @@ struct gatedesc {
     unsigned gd_p : 1;                // Present
     unsigned gd_off_31_16 : 16;        // high bits of offset in segment
 };
-
 /* *
  * Set up a normal interrupt/trap gate descriptor
  *   - istrap: 1 for a trap (= exception) gate, 0 for an interrupt gate
