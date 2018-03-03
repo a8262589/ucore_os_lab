@@ -304,10 +304,11 @@ void
 		*/
 		uint32_t ebp = read_ebp();
 		uint32_t eip = read_eip();
-		for (int i=0;i<STACKFRAME_DEPTH;++i)
+		int i=0;
+		for (;i<STACKFRAME_DEPTH;++i)
 		{
 			cprintf("ebp:0x%08x eip:0x%08x ",ebp,eip);
-			unit32_t *p=ebp;
+			uint32_t *p=ebp;
 			cprintf("args:0x%08x 0x%08x 0x%08x 0x%08x",
 				*(p+2),*(p+3),*(p+4),*(p+5));
 			cprintf("\n");
