@@ -70,14 +70,14 @@ default_init_memmap(struct Page *base, size_t n) {
     assert(n > 0);
     struct Page *p = base;
     for (; p != base + n; p ++) {
-        assert(PageReserved(p));
+		assert(PageReserved(p));
         p->flags = p->property = 0;
+		SetPageProperty(p);
         set_page_ref(p, 0);
+		list_add_before(&free_list, &(p->page_link));
     }
     base->property = n;
-    SetPageProperty(base);
     nr_free += n;
-    list_add(&free_list, &(base->page_link));
 }
 
 static struct Page *
@@ -91,19 +91,24 @@ default_alloc_pages(size_t n) {
     while ((le = list_next(le)) != &free_list) {
         struct Page *p = le2page(le, page_link);
         if (p->property >= n) {
-            page = p;
+			struct Page *q;
+			int i=0;
+			while(i++ < n)
+			{
+				q = le2page(le, page_link);
+				SetPageReserved(q);
+				ClearPageProperty(q);
+				le = list_next(le);
+				list_del(&(q->page_link));
+			}
+			if (p->property >n){
+			q = le2page(le, page_link)->property = p->property - n;
+			SetPageProperty(q);
+			}
+			page = p;
+			nr_free -= n;
             break;
         }
-    }
-    if (page != NULL) {
-        list_del(&(page->page_link));
-        if (page->property > n) {
-            struct Page *p = page + n;
-            p->property = page->property - n;
-            list_add(&free_list, &(p->page_link));
-    }
-        nr_free -= n;
-        ClearPageProperty(page);
     }
     return page;
 }
@@ -114,7 +119,8 @@ default_free_pages(struct Page *base, size_t n) {
     struct Page *p = base;
     for (; p != base + n; p ++) {
         assert(!PageReserved(p) && !PageProperty(p));
-        p->flags = 0;
+		p->flags = p->property = 0;
+		ClearPageReserved(p);
         set_page_ref(p, 0);
     }
     base->property = n;
@@ -123,7 +129,7 @@ default_free_pages(struct Page *base, size_t n) {
     while (le != &free_list) {
         p = le2page(le, page_link);
         le = list_next(le);
-        if (base + base->property == p) {
+        if (base + base->property == p) {//²åÈë
             base->property += p->property;
             ClearPageProperty(p);
             list_del(&(p->page_link));
@@ -136,7 +142,8 @@ default_free_pages(struct Page *base, size_t n) {
         }
     }
     nr_free += n;
-    list_add(&free_list, &(base->page_link));
+	SetPageProperty(base);
+	list_add_before(&free_list, &(base->page_link));
 }
 
 static size_t

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="boot\bootmain.c" />
+    <ClCompile Include="kern\debug\kdebug.c" />
+    <ClCompile Include="kern\debug\kmonitor.c" />
+    <ClCompile Include="kern\debug\panic.c" />
+    <ClCompile Include="kern\driver\clock.c" />
+    <ClCompile Include="kern\driver\console.c" />
+    <ClCompile Include="kern\driver\intr.c" />
+    <ClCompile Include="kern\driver\picirq.c" />
+    <ClCompile Include="kern\init\init.c" />
+    <ClCompile Include="kern\libs\readline.c" />
+    <ClCompile Include="kern\libs\stdio.c" />
+    <ClCompile Include="kern\mm\default_pmm.c" />
+    <ClCompile Include="kern\mm\pmm.c" />
+    <ClCompile Include="kern\trap\trap.c" />
+    <ClCompile Include="libs\printfmt.c" />
+    <ClCompile Include="libs\string.c" />
+    <ClCompile Include="tools\sign.c" />
+    <ClCompile Include="tools\vector.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boot\asm.h" />
+    <ClInclude Include="kern\debug\assert.h" />
+    <ClInclude Include="kern\debug\kdebug.h" />
+    <ClInclude Include="kern\debug\kmonitor.h" />
+    <ClInclude Include="kern\debug\stab.h" />
+    <ClInclude Include="kern\driver\clock.h" />
+    <ClInclude Include="kern\driver\console.h" />
+    <ClInclude Include="kern\driver\intr.h" />
+    <ClInclude Include="kern\driver\kbdreg.h" />
+    <ClInclude Include="kern\driver\picirq.h" />
+    <ClInclude Include="kern\mm\default_pmm.h" />
+    <ClInclude Include="kern\mm\memlayout.h" />
+    <ClInclude Include="kern\mm\mmu.h" />
+    <ClInclude Include="kern\mm\pmm.h" />
+    <ClInclude Include="kern\sync\sync.h" />
+    <ClInclude Include="kern\trap\trap.h" />
+    <ClInclude Include="libs\atomic.h" />
+    <ClInclude Include="libs\defs.h" />
+    <ClInclude Include="libs\elf.h" />
+    <ClInclude Include="libs\error.h" />
+    <ClInclude Include="libs\list.h" />
+    <ClInclude Include="libs\stdarg.h" />
+    <ClInclude Include="libs\stdio.h" />
+    <ClInclude Include="libs\string.h" />
+    <ClInclude Include="libs\x86.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
