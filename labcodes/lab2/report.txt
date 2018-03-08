@@ -1,0 +1,18 @@
+练习一：
+1、根据注释着手完整lab2代码；参看list.h、le2page、PageReserved（此汇编语义未查清）、SetPageProperty并在piazza上搜索相关信息，完成对链表和宏、内联汇编的理解。
+
+default_init_memmap：
+2、对for (; p != base + n; p ++) ：中p++跳转未理解，通过帖子弄懂：https://piazza.com/class/i5j09fnsl7k5x0?cid=554
+
+3、make qemu出现bug，通过调试并参阅answer对answer中每一页SetPageProperty(p)不理解，认为与PG_property注释不符，参看piazza帖子中助教回答更糊涂了：
+https://piazza.com/class/i5j09fnsl7k5x0?cid=1021    
+https://piazza.com/class/i5j09fnsl7k5x0?cid=686
+https://piazza.com/class/i5j09fnsl7k5x0?cid=192   //暂且按此贴中助教所述PG_property置一则可以用于分配，进行实验。
+
+
+练习一总结：
+basic_check后有bug，从新理清思路：保证连续空闲页首页链入链表，flag置位，分配回收亦需要准守此规则，回收时需要“左顾右盼”合并空闲页。check_alloc_pages()succeed!
+
+通过参阅大佬的实现发现问题、以及优化改进如下：
+错误实现：我的视线中链表中未按首地址递增排序，修改各函数。
+算法改进：优化合并，查找效率。
