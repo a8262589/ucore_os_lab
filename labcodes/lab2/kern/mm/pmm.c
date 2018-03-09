@@ -368,18 +368,21 @@ get_pte(pde_t *pgdir, uintptr_t la, bool create) {
      *   PTE_W           0x002                   // page table/directory entry flags bit : Writeable
      *   PTE_U           0x004                   // page table/directory entry flags bit : User can access
      */
-#if 0
-    pde_t *pdep = NULL;   // (1) find page directory entry
-    if (0) {              // (2) check if entry is not present
-                          // (3) check if creating is needed, then alloc page for page table
-                          // CAUTION: this page is used for page table, not for common data page
-                          // (4) set page reference
-        uintptr_t pa = 0; // (5) get linear address of page
-                          // (6) clear page content using memset
-                          // (7) set page directory entry's permission
+/*#if 0*/
+    pde_t *pdep = pgdir + PDX(la);					// (1) find page directory entry
+    if (!(*pdep & PTE_P)) {							// (2) check if entry is not present
+		struct Page * PT_page2;
+		if(create&&(PT_page2 = alloc_page())!=NULL){// (3) check if creating is needed, then alloc page for page table
+													// CAUTION: this page is used for page table, not for common data page
+			set_page_ref(PT_page2, 1);				// (4) set page reference
+			uintptr_t pa = page2pa(PT_page2);		// (5) get linear address of page
+			memset(KADDR(pa), 0, PGSIZE);			// (6) clear page content using memset
+			*pdep = pa | PTE_USER;					// (7) set page directory entry's permission
+		}											//目录表项中是虚拟地址？不，是物理地址！
+		else return NULL;
     }
-    return NULL;          // (8) return page table entry
-#endif
+    return (pte_t *)KADDR(PDE_ADDR(*pdep)) + PTX(la);// (8) return page table entry
+/*#endif*/
 }
 
 //get_page - get related Page struct for linear address la using PDT pgdir
