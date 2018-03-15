@@ -89,6 +89,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="obj\bootblock.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\kernel.asm">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="boot\asm.h">
       <Filter>Header Files</Filter>
     </ClInclude>

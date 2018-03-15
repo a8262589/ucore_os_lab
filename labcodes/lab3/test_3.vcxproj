@@ -67,6 +67,10 @@
     <ClCompile Include="tools\vector.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="obj\bootblock.asm" />
+    <None Include="obj\kernel.asm" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="boot\asm.h" />
     <ClInclude Include="kern\debug\assert.h" />
     <ClInclude Include="kern\debug\kdebug.h" />
