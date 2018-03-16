@@ -305,7 +305,7 @@ void
 		uint32_t ebp = read_ebp();
 		uint32_t eip = read_eip();
 		int i=0;
-		for (;i<STACKFRAME_DEPTH;++i)
+		for (;ebp != 0 &&i<STACKFRAME_DEPTH;++i)
 		{
 			cprintf("ebp:0x%08x eip:0x%08x ",ebp,eip);
 			uint32_t *p=ebp;
