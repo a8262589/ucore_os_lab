@@ -396,18 +396,24 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
    }
 #endif
 	ptep = get_pte(mm->pgdir, addr, 1);
+	if(!ptep)goto failed;
 	if (*ptep == 0) {
-		pgdir_alloc_page(mm->pgdir, addr, perm);
+		if((pgdir_alloc_page(mm->pgdir, addr, perm))==NULL)goto failed;
+		memset(addr, 0, PGSIZE);
 	}
 	else{
 		if(swap_init_ok) {
 			struct Page *page=NULL;
 			swap_in(mm, addr, &page);
-			page_insert(mm->pgdir, page, addr, perm);
+			if (page_insert(mm->pgdir, page, addr, perm) != 0) {
+				free_page(page);
+				goto failed;
+			}
 			swap_map_swappable(mm, addr, page, 0);
+			page->pra_vaddr = addr;
 		}
+		else goto failed;
 	}
-
    ret = 0;
 failed:
     return ret;

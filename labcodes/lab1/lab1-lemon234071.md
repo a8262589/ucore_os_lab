@@ -12,7 +12,7 @@
 
 
 练习一：  
-1. 操作系统镜像文件ucore.img是如何一步一步生成的？(需要比较详细地解释Makefile中每一条相关命令和命令参数的含义，以及说明命令导致的结果)  
+1. 操作系统镜像文件ucore.img是如何一步一步生成的？(需要比较详细地解释Makefile中每一条相关命令和命令参数的含义，以及说明命令导致的结果)。  
 
 答：  
 生成kern：  
@@ -94,13 +94,14 @@
 		(gdb)si
 	0x0000e05b
 		(gdb)si
-1.		...
+		...  
+1.		
 4 如果想看BIOS的代码  
 
-	(gdb)x /2i 0xfffff0
-		
-	0xfffff0: add  %
-	0xfffff2: add  %  
+		(gdb)x /2i 0xfffff0
+			
+		0xfffff0: add  %
+		0xfffff2: add  %  
 
 2.
 执行
