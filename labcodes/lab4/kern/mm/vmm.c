@@ -344,7 +344,7 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
     ret = -E_NO_MEM;
 
     pte_t *ptep=NULL;
-    /*LAB3 EXERCISE 1: YOUR CODE
+    /*LAB3 EXERCISE 1: lemon234071
     * Maybe you want help comment, BELOW comments can help you finish the code
     *
     * Some Useful MACROs and DEFINEs, you can use them in below implementation.
@@ -362,16 +362,15 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
     *
     */
 #if 0
-    /*LAB3 EXERCISE 1: YOUR CODE*/
+    /*LAB3 EXERCISE 1: lemon234071*/
     ptep = ???              //(1) try to find a pte, if pte's PT(Page Table) isn't existed, then create a PT.
     if (*ptep == 0) {
                             //(2) if the phy addr isn't exist, then alloc a page & map the phy addr with logical addr
 
     }
     else {
-    /*LAB3 EXERCISE 2: YOUR CODE
-    * Now we think this pte is a  swap entry, we should load data from disk to a page with phy addr,
-    * and map the phy addr with logical addr, trigger swap manager to record the access situation of this page.
+    /*LAB3 EXERCISE 2: lemon234071
+    * Now we think this pte is a  swap entry, we should load data from disk to a page with phy addr, and map the phy addr with logical addr, trigger swap manager to record the access situation of this page.
     *
     *  Some Useful MACROs and DEFINEs, you can use them in below implementation.
     *  MACROs or Functions:
@@ -393,6 +392,25 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
         }
    }
 #endif
+	ptep = get_pte(mm->pgdir, addr, 1);
+	if(!ptep)goto failed;
+	if (*ptep == 0) {
+		if((pgdir_alloc_page(mm->pgdir, addr, perm))==NULL)goto failed;
+		memset(addr, 0, PGSIZE);
+	}
+	else{
+		if(swap_init_ok) {
+			struct Page *page=NULL;
+			swap_in(mm, addr, &page);
+			if (page_insert(mm->pgdir, page, addr, perm) != 0) {
+				free_page(page);
+				goto failed;
+			}
+			swap_map_swappable(mm, addr, page, 0);
+			page->pra_vaddr = addr;
+		}
+		else goto failed;
+	}
    ret = 0;
 failed:
     return ret;

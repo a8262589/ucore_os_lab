@@ -274,6 +274,6 @@ check_swap(void)
      }
      cprintf("count is %d, total is %d\n",count,total);
      //assert(count == 0);
-     
+
      cprintf("check_swap() succeeded!\n");
 }
