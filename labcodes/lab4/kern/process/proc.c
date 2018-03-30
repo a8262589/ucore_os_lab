@@ -102,18 +102,13 @@ alloc_proc(void) {
      *       uint32_t flags;                             // Process flag
      *       char name[PROC_NAME_LEN + 1];               // Process name
      */
+		memset(proc, 0, sizeof(struct proc_struct));
 		proc->pid = -1;
 		proc->cr3 = boot_cr3;
 		proc->state = PROC_UNINIT;
-		proc->runs = 0;
-		proc->kstack = 0;
-		proc->need_resched = 0;
 		proc->parent = NULL;
 		proc->mm = NULL;
-		//proc->context = 0;
-		proc->tf = NULL;
-		proc->flags = 0;
-		memset(proc->name, 0, PROC_NAME_LEN + 1);
+		proc->tf = NULL;		
     }
     return proc;
 }
@@ -332,6 +327,7 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
 // 	wakeup_proc(child_proc);
 // 	
 // 	//nr_process++;
+	copy_thread(proc, stack , tf);
 	bool intr_flag;
 	local_intr_save(intr_flag);
 	{
