@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="boot\bootmain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\debug\kdebug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\debug\kmonitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\debug\panic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\driver\clock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\driver\console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\driver\ide.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\driver\intr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\driver\picirq.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\fs\swapfs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\init\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\libs\readline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\libs\stdio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\default_pmm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\kmalloc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\pmm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\swap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\swap_fifo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\mm\vmm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\process\proc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\schedule\default_sched.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\schedule\sched.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\syscall\syscall.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kern\trap\trap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\hash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\printfmt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\rand.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\sign.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\vector.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\badarg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\badsegment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\divzero.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\exit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\faultread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\faultreadkernel.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\forktest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\forktree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\hello.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\pgdir.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\priority.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\softint.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\spin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\testbss.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\waitkill.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\yield.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\libs\panic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\libs\stdio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\libs\syscall.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\libs\ulib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user\libs\umain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\bootblock.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\kernel.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\badarg.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\badsegment.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\divzero.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\exit.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\faultread.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\faultreadkernel.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\forktest.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\forktree.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\hello.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\matrix.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\pgdir.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\priority.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\softint.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\spin.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\testbss.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\waitkill.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="obj\user\yield.asm">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boot\asm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\debug\assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\debug\kdebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\debug\kmonitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\debug\stab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\ide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\intr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\kbdreg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\driver\picirq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\fs\fs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\fs\swapfs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\default_pmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\kmalloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\memlayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\mmu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\pmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\swap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\swap_fifo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\mm\vmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\process\proc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\schedule\default_sched.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\schedule\sched.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\sync\sync.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\syscall\syscall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kern\trap\trap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\atomic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\elf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\skew_heap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\stdarg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\stdio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\stdlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\x86.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user\libs\syscall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user\libs\ulib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
