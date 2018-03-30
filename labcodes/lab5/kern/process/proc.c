@@ -427,6 +427,7 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
 	local_intr_restore(intr_flag);
 	wakeup_proc(proc);
 	ret = proc->pid;
+	//set_links(proc);
 	//LAB5 lemon234071 : (update LAB4 steps)
    /* Some Functions
     *    set_links:  set the relation links of process.  ALSO SEE: remove_links:  lean the relation links of process 
