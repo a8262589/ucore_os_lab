@@ -496,7 +496,6 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
 	if(!ptep)goto failed;
 	if (*ptep == 0) {
 		if((pgdir_alloc_page(mm->pgdir, addr, perm))==NULL)goto failed;
-		memset(addr, 0, PGSIZE);
 	}
 	else{
 		if(swap_init_ok) {
