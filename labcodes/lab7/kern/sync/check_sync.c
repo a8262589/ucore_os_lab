@@ -181,28 +181,40 @@ void phi_test_condvar (i) {
 void phi_take_forks_condvar(int i) {
      down(&(mtp->mutex));
 //--------into routine in monitor--------------
-     // LAB7 EXERCISE1: YOUR CODE
+     // LAB7 EXERCISE1: lemon234071
      // I am hungry
      // try to get fork
+	 state_condvar[i] = HUNGRY;
+	 phi_test_condvar(i);
+	 up(&(mtp->mutex));
+	 if(state_condvar[i] != EATING)
+		 cond_wait(&mtp->cv[i]);
+
 //--------leave routine in monitor--------------
-      if(mtp->next_count>0)
-         up(&(mtp->next));
-      else
-         up(&(mtp->mutex));
+       if(mtp->next_count>0)
+          up(&(mtp->next));
+       else
+          up(&(mtp->mutex));
 }
 
 void phi_put_forks_condvar(int i) {
      down(&(mtp->mutex));
 
 //--------into routine in monitor--------------
-     // LAB7 EXERCISE1: YOUR CODE
+     // LAB7 EXERCISE1: lemon234071
      // I ate over
      // test left and right neighbors
+	 state_condvar[i] = THINKING;
+	 // 	 phi_test_condvar((i + 4) % 5);
+	 // 	 phi_test_condvar((i + 1) % 5);
+	 // 	 up(&(mtp->mutex));
+	 phi_test_condvar(LEFT);
+	 phi_test_condvar(RIGHT);
 //--------leave routine in monitor--------------
-     if(mtp->next_count>0)
-        up(&(mtp->next));
-     else
-        up(&(mtp->mutex));
+      if(mtp->next_count>0)
+         up(&(mtp->next));
+      else
+         up(&(mtp->mutex));
 }
 
 //---------- philosophers using monitor (condition variable) ----------------------
